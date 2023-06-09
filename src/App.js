@@ -16,7 +16,7 @@ function App() {
     <Router>
       <Header />
       
-      <div className="bg-dark vh-100">
+      <div className="bg-dark vh-auto min-vh-100 vw-auto">
       <Routes>
         <Route path="/" element={<Data />} />
         <Route path="/QR" element={<QR />} />
