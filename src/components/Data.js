@@ -15,7 +15,6 @@ export default function Data() {
     setRandomMeme("");
   }
   
-  
   const fetchData = async () => {
     const response = await fetch("https://api.imgflip.com/get_memes");
     const data = await response.json();
@@ -25,6 +24,7 @@ export default function Data() {
     setRandomMeme(randomMeme);
     setmeme("")
   };
+  
   const shuffleArray = (array) => {
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -35,43 +35,40 @@ export default function Data() {
   };
 
   return (
-    
-    <div className="input-group mb-3 container py-3 ">
-      <button type="button" className="btn btn-primary mx-1 rounded" onClick={fetchData}>
+    <div className="input-group mb-3 container py-3">
+      <button type="button" className="btn btn-primary mx-1 my-1 rounded" onClick={fetchData}>
         Fetch Meme Template
       </button>
-      
-      <button type="button" className="btn btn-primary mx-1 rounded" onClick={fetchmeme}>
+      <button type="button" className="btn btn-primary mx-1 my-1 rounded" onClick={fetchmeme}>
         Fetch Random Facts
       </button>
-      <button type="button" className="btn btn-primary mx-1 rounded  " >
-      
+      <button type="button" className="btn btn-primary mx-1 my-1 rounded">
         <a className="text-white link-underline link-underline-opacity-0" href="https://www.file.io/">
-        Upload and Share files
+          Upload and Share files
         </a>
       </button>
       <Link to="/QR">
-      <button type="button" className="btn btn-primary mx-1 rounded" onClick={fetchmeme}>
-        Create QR code
-      </button></Link>
-      <Link to="/dict">
-      <button type="button" className="btn btn-primary mx-1 rounded" onClick={fetchmeme}>
-        Dictionary
-      </button>
+        <button type="button" className="btn btn-primary mx-1 my-1 rounded" onClick={fetchmeme}>
+          Create QR code
+        </button>
       </Link>
-      
+      <Link to="/dict">
+        <button type="button" className="btn btn-primary mx-1 my-1 rounded" onClick={fetchmeme}>
+          Dictionary
+        </button>
+      </Link>
       
       { randomMeme &&
         <div className="container img-fluid">
           <h2 className="text-white">{randomMeme.name}</h2>
-          <img src={randomMeme.url} alt={randomMeme.name} />
+          <img className="img-fluid" src={randomMeme.url} alt={randomMeme.name} style={{ maxWidth: "100%" }} />
         </div>
-}
+      }
+      
       <div className="container">
-      <h4 className="text-white">{meme}</h4>
+        <h4 className="text-white">{meme}</h4>
       </div>
-
     </div>
-  
   );
 }
+
